@@ -150,8 +150,9 @@ export default function Dashboard() {
                   ))}
                 </Pie>
                 <Tooltip
-                  contentStyle={{ background: 'hsl(215, 25%, 10%)', border: '1px solid hsl(215, 20%, 18%)', borderRadius: 8 }}
-                  formatter={(value: number) => [`₹${value.toLocaleString('en-IN')}`]}
+                  contentStyle={{ background: 'hsl(215, 30%, 20%)', border: '2px solid hsl(163, 100%, 42%)', borderRadius: 8, padding: '8px 12px' }}
+                  labelStyle={{ color: 'hsl(163, 100%, 42%)', fontWeight: 'bold' }}
+                  formatter={(value: number) => [`₹${value.toLocaleString('en-IN')}`, 'Amount']}
                 />
                 <Legend />
               </PieChart>

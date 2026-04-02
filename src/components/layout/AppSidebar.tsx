@@ -27,7 +27,7 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon" className="border-r border-border/50">
       <SidebarContent className="pt-4">
-        <div className={`px-4 pb-6 ${collapsed ? 'px-2' : ''}`}>
+        <div className={`px-2 pb-6 ${collapsed ? 'px-2' : ''}`}>
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm shrink-0">
               Z
