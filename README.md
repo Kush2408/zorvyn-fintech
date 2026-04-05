@@ -102,3 +102,12 @@ Open [http://localhost:8080](http://localhost:8080) in your browser.
 - Currency is INR (₹) throughout
 - The % change indicators on dashboard cards are static/mock values
 - localStorage is used for persistence (transactions, role, theme)
+
+## Snapshots
+<img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/3eb13a9f-2dbc-41dc-80e7-6f45e4d49772" />
+<img width="1919" height="867" alt="image" src="https://github.com/user-attachments/assets/f9d02c77-0f00-40ef-897d-e993f9402306" />
+<img width="1919" height="863" alt="image" src="https://github.com/user-attachments/assets/9d7f9bee-2394-4c14-bbb5-2fb423bebf5f" />
+<img width="1919" height="862" alt="image" src="https://github.com/user-attachments/assets/7cc737f1-83f7-4334-8d90-087ffba71bcd" />
+
+
+
