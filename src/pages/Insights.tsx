@@ -147,7 +147,7 @@ export default function Insights() {
           <Skeleton className="h-[300px] w-full" />
         ) : (
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={monthComparison} barGap={8}>
+            <BarChart data={monthComparison} barGap={8} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(215, 20%, 18%)" />
               <XAxis dataKey="name" stroke="hsl(215, 15%, 55%)" fontSize={12} />
               <YAxis stroke="hsl(215, 15%, 55%)" fontSize={12} tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`} />

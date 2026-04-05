@@ -70,7 +70,7 @@ export async function getInsights(): Promise<{
   monthComparison: { name: string; Income: number; Expenses: number }[];
 }> {
   await delay();
-  maybeThrow();
+  // maybeThrow(); // Removed random failure for insights
 
   // Top category
   const cats: Record<string, number> = {};
@@ -89,11 +89,9 @@ export async function getInsights(): Promise<{
     ? expenses.reduce((max, t) => t.amount > max.amount ? t : max, expenses[0])
     : null;
 
-  // Month comparison
-  const now = new Date();
-  const currMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
-  const prev = new Date(now.getFullYear(), now.getMonth() - 1);
-  const prevMonth = `${prev.getFullYear()}-${String(prev.getMonth() + 1).padStart(2, '0')}`;
+  // Month comparison - get the last two months with data
+  const monthsWithData = [...new Set(store.map(t => t.date.slice(0, 7)))].sort().slice(-2);
+  const [prevMonth, currMonth] = monthsWithData.length === 2 ? monthsWithData : ['2025-02', '2025-03']; // fallback
 
   const calc = (month: string) => {
     const txs = store.filter(t => t.date.startsWith(month));
@@ -103,15 +101,20 @@ export async function getInsights(): Promise<{
     };
   };
 
-  const curr = calc(currMonth);
   const prevData = calc(prevMonth);
+  const curr = calc(currMonth);
+
+  const formatMonthName = (month: string) => {
+    const [year, mon] = month.split('-');
+    return new Date(parseInt(year), parseInt(mon) - 1).toLocaleDateString('en-IN', { month: 'short', year: '2-digit' });
+  };
 
   return {
     topCategory,
     biggestExpense,
     monthComparison: [
-      { name: 'Previous', Income: prevData.income, Expenses: prevData.expenses },
-      { name: 'Current', Income: curr.income, Expenses: curr.expenses },
+      { name: formatMonthName(prevMonth), Income: prevData.income, Expenses: prevData.expenses },
+      { name: formatMonthName(currMonth), Income: curr.income, Expenses: curr.expenses },
     ],
   };
 }
